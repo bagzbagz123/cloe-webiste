@@ -96,7 +96,7 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
                 <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl">
                     The only thing standing between you and your dream self is a decision.
                 </p>
-                <RainbowButton className="px-10 py-5 text-lg font-bold uppercase tracking-widest transition-all">
+                <RainbowButton className="px-10 py-5 text-lg font-bold uppercase tracking-widest transition-all !text-white">
                     Claim Your Transformation
                 </RainbowButton>
             </motion.div>

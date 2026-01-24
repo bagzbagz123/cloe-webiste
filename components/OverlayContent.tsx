@@ -32,7 +32,7 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
                 className="absolute flex flex-col items-center"
             >
                 <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white/90 mb-4 uppercase">
-                    Wear Confidence.
+                    CLOFITNESS
                 </h1>
                 <p className="text-lg md:text-2xl text-white/50 tracking-widest uppercase text-center max-w-2xl px-4">
                     Sculpt a physique that demands attention and an energy that commands the room.

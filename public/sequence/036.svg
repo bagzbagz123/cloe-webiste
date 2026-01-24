@@ -1,0 +1,10 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#050505" />
+  <circle cx="1055.1056516295153" cy="540" r="140" 
+    fill="none" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2" />
+  <text x="50%" y="90%" text-anchor="middle" fill="#333" font-family="sans-serif" font-size="24">
+    Frame 36/60
+  </text>
+  <!-- Simulating a "pose" with simple lines -->
+  <line x1="960" y1="540" x2="798.1966011250105" y2="422.4429495415054" stroke="white" stroke-width="5" />
+</svg>

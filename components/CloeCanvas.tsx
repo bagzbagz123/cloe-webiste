@@ -79,10 +79,17 @@ export default function CloeCanvas({ scrollProgress, onLoaded }: CloeCanvasProps
         // Scaling logic to "contain"
         const canvasWidth = canvas.width;
         const canvasHeight = canvas.height;
-        const imgWidth = image.width || 1920; // Default if not loaded yet (but it is)
+        const imgWidth = image.width || 1920;
         const imgHeight = image.height || 1080;
 
-        const scale = Math.min(canvasWidth / imgWidth, canvasHeight / imgHeight);
+        // Determine if mobile (CSS pixels)
+        const isMobile = window.innerWidth < 768;
+
+        // Desktop: Contain (Math.min), Mobile: Cover (Math.max)
+        const scale = isMobile
+            ? Math.max(canvasWidth / imgWidth, canvasHeight / imgHeight)
+            : Math.min(canvasWidth / imgWidth, canvasHeight / imgHeight);
+
         const x = (canvasWidth / 2) - (imgWidth * scale / 2);
         const y = (canvasHeight / 2) - (imgHeight * scale / 2);
 

@@ -1,5 +1,8 @@
 'use client';
 
+import { useState } from 'react';
+import SchedulingModal from './SchedulingModal';
+
 import { motion, useTransform, MotionValue } from 'framer-motion';
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
@@ -8,6 +11,8 @@ interface OverlayContentProps {
 }
 
 export default function OverlayContent({ scrollProgress }: OverlayContentProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // Beats Configuration
     // Beat A: 0-20%
     const opacityA = useTransform(scrollProgress, [0, 0.15, 0.20], [1, 1, 0]);
@@ -96,10 +101,15 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
                 <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl">
                     The only thing standing between you and your dream self is a decision.
                 </p>
-                <RainbowButton className="px-10 py-5 text-lg font-bold uppercase tracking-widest transition-all !text-white">
+                <RainbowButton
+                    className="px-10 py-5 text-lg font-bold uppercase tracking-widest transition-all !text-white"
+                    onClick={() => setIsModalOpen(true)}
+                >
                     Claim Your Transformation
                 </RainbowButton>
             </motion.div>
+
+            <SchedulingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
         </div>
     );

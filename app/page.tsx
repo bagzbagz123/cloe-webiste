@@ -49,7 +49,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-0 h-screen w-full overflow-hidden isolation-isolate">
         {/* Canvas Layer - Uses smooth spring physics */}
         {/* Canvas Layer */}
         <div className="absolute inset-0">

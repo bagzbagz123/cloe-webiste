@@ -93,12 +93,12 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
             {/* BEAT D: THE COMMITMENT */}
             <motion.div
                 style={{ opacity: opacityD }}
-                className="absolute flex flex-col items-center pointer-events-auto mix-blend-difference" // Enable pointer events for button
+                className="absolute flex flex-col items-center pointer-events-auto" // Enable pointer events for button
             >
-                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white mb-6 text-center">
+                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white mb-6 text-center mix-blend-difference">
                     Step Into<br />Your Best Life
                 </h2>
-                <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl">
+                <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl mix-blend-difference">
                     The only thing standing between you and your dream self is a decision.
                 </p>
                 <RainbowButton

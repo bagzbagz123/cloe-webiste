@@ -36,7 +36,7 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
                 style={{ opacity: opacityA, y: yA }}
                 className="absolute flex flex-col items-center mix-blend-difference"
             >
-                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-4 uppercase">
+                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-4 uppercase mix-blend-difference">
                     CLOFITNESS
                 </h1>
                 <p className="text-lg md:text-2xl text-white tracking-widest uppercase text-center max-w-2xl px-4">

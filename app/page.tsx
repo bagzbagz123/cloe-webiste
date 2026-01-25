@@ -51,21 +51,21 @@ export default function Home() {
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {/* Canvas Layer - Uses smooth spring physics */}
-        <div className="absolute inset-0 z-0">
+        {/* Canvas Layer */}
+        <div className="absolute inset-0">
           <CloeCanvas
             scrollProgress={smoothProgress}
             onLoaded={() => setIsLoaded(true)}
           />
         </div>
 
-        {/* Text Overlay Layer - Uses raw scroll progress or smooth? 
-            Using smooth matches the video movement better. */}
-        <div className="absolute inset-0 z-10">
+        {/* Text Overlay Layer */}
+        <div className="absolute inset-0">
           <OverlayContent scrollProgress={smoothProgress} />
         </div>
 
         {/* Subtle noise/texture overlay for "premium" feel? Optional */}
-        <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] mix-blend-overlay"
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
           style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}
         />
       </div>

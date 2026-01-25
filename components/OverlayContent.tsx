@@ -34,12 +34,12 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
             {/* BEAT A: THE VISION */}
             <motion.div
                 style={{ opacity: opacityA, y: yA }}
-                className="absolute flex flex-col items-center"
+                className="absolute flex flex-col items-center mix-blend-difference"
             >
-                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white/90 mb-4 uppercase">
+                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-4 uppercase">
                     CLOFITNESS
                 </h1>
-                <p className="text-lg md:text-2xl text-white/50 tracking-widest uppercase text-center max-w-2xl px-4">
+                <p className="text-lg md:text-2xl text-white tracking-widest uppercase text-center max-w-2xl px-4">
                     Sculpt a physique that demands attention and an energy that commands the room.
                 </p>
             </motion.div>

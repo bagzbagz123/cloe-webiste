@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
@@ -26,29 +28,30 @@ export default function SchedulingModal({ isOpen, onClose }: SchedulingModalProp
     useEffect(() => {
         if (isOpen) {
             (function (C: any, A: string, L: string) {
-                let p = function (a: any, ar: any) { a.q.push(ar); };
-                let d = C.document;
-                C.Cal = C.Cal || function () {
-                    let cal = C.Cal;
-                    let ar = arguments;
+                const p = function (a: any, ar: any) { a.q.push(ar); };
+                const d = C.document;
+                C.Cal = C.Cal || function (...args: any[]) {
+                    const cal = C.Cal;
                     if (!cal.loaded) {
                         cal.ns = {};
                         cal.q = cal.q || [];
-                        d.head.appendChild(d.createElement("script")).src = A;
+                        const script = d.createElement("script");
+                        script.src = A;
+                        d.head.appendChild(script);
                         cal.loaded = true;
                     }
-                    if (ar[0] === L) {
-                        const api: any = function () { p(api, arguments); };
-                        const namespace = ar[1];
+                    if (args[0] === L) {
+                        const api: any = function (...apiArgs: any[]) { p(api, apiArgs); };
+                        const namespace = args[1];
                         api.q = api.q || [];
                         if (typeof namespace === "string") {
                             cal.ns[namespace] = cal.ns[namespace] || api;
-                            p(cal.ns[namespace], ar);
+                            p(cal.ns[namespace], args);
                             p(cal, ["initNamespace", namespace]);
-                        } else p(cal, ar);
+                        } else p(cal, args);
                         return;
                     }
-                    p(cal, ar);
+                    p(cal, args);
                 };
             })(window, "https://app.cal.com/embed/embed.js", "init");
 

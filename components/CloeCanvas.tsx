@@ -14,6 +14,7 @@ export default function CloeCanvas({ scrollProgress, onLoaded }: CloeCanvasProps
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<HTMLImageElement[]>([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const loggedErrors = useRef(new Set<number>());
 
     // Preload images
     useEffect(() => {
@@ -40,7 +41,10 @@ export default function CloeCanvas({ scrollProgress, onLoaded }: CloeCanvasProps
             img.src = `/frames/${frameNum}.jpg`;
             img.onload = onImageLoad;
             // Fallback for error?
-            img.onerror = onImageLoad;
+            img.onerror = () => {
+                console.error(`Failed to load frame: ${frameNum}`);
+                onImageLoad();
+            };
         });
 
         return () => {
@@ -66,7 +70,14 @@ export default function CloeCanvas({ scrollProgress, onLoaded }: CloeCanvasProps
         );
 
         const image = images[frameIndex];
-        if (!image) return;
+        if (!image || !image.complete || image.naturalWidth === 0) {
+            // Only log once per frame to avoid spamming
+            if (!loggedErrors.current.has(frameIndex)) {
+                console.warn(`Frame ${frameIndex} is broken or not loaded`);
+                loggedErrors.current.add(frameIndex);
+            }
+            return;
+        }
 
         // Clear and draw
         // Efficient clearing? actually if the image covers full canvas, we might not need clear,

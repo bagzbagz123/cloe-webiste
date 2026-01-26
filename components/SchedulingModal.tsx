@@ -22,19 +22,45 @@ export default function SchedulingModal({ isOpen, onClose }: SchedulingModalProp
         };
     }, [isOpen]);
 
-    // Load Calendly script
+    // Load Cal.com script
     useEffect(() => {
         if (isOpen) {
-            const head = document.querySelector('head');
-            const script = document.createElement('script');
-            script.setAttribute('src', 'https://assets.calendly.com/assets/external/widget.js');
-            script.setAttribute('async', 'true');
-            head?.appendChild(script);
+            (function (C: any, A: string, L: string) {
+                let p = function (a: any, ar: any) { a.q.push(ar); };
+                let d = C.document;
+                C.Cal = C.Cal || function () {
+                    let cal = C.Cal;
+                    let ar = arguments;
+                    if (!cal.loaded) {
+                        cal.ns = {};
+                        cal.q = cal.q || [];
+                        d.head.appendChild(d.createElement("script")).src = A;
+                        cal.loaded = true;
+                    }
+                    if (ar[0] === L) {
+                        const api: any = function () { p(api, arguments); };
+                        const namespace = ar[1];
+                        api.q = api.q || [];
+                        if (typeof namespace === "string") {
+                            cal.ns[namespace] = cal.ns[namespace] || api;
+                            p(cal.ns[namespace], ar);
+                            p(cal, ["initNamespace", namespace]);
+                        } else p(cal, ar);
+                        return;
+                    }
+                    p(cal, ar);
+                };
+            })(window, "https://app.cal.com/embed/embed.js", "init");
 
-            return () => {
-                // Optional: cleanup if needed, though usually fine to leave script loaded
-                // head?.removeChild(script); 
-            };
+            (window as any).Cal("init", "30min", { origin: "https://app.cal.com" });
+
+            (window as any).Cal.ns["30min"]("inline", {
+                elementOrSelector: "#my-cal-inline-30min",
+                config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
+                calLink: "ivans-qbhhss/30min",
+            });
+
+            (window as any).Cal.ns["30min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
         }
     }, [isOpen]);
 
@@ -75,11 +101,10 @@ export default function SchedulingModal({ isOpen, onClose }: SchedulingModalProp
 
                             {/* Content */}
                             <div className="flex-1 overflow-y-auto bg-[#0a0a0a] min-h-[750px] relative">
-                                {/* Calendly Inline Widget */}
+                                {/* Cal.com Inline Widget */}
                                 <div
-                                    className="calendly-inline-widget w-full h-full min-h-[700px]"
-                                    data-url="https://calendly.com/contact-kolossmedia/one-on-one-fitness-coaching"
-                                    style={{ minWidth: '320px', height: '700px' }}
+                                    id="my-cal-inline-30min"
+                                    className="w-full h-full min-h-[700px] overflow-scroll"
                                 />
                             </div>
                         </motion.div>

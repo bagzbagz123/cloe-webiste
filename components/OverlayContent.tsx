@@ -34,12 +34,12 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
             {/* BEAT A: THE VISION */}
             <motion.div
                 style={{ opacity: opacityA, y: yA }}
-                className="absolute flex flex-col items-center mix-blend-difference"
+                className="absolute flex flex-col items-center"
             >
-                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-4 uppercase mix-blend-difference">
+                <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white/90 mb-4 uppercase">
                     CLOFITNESS
                 </h1>
-                <p className="text-lg md:text-2xl text-white tracking-widest uppercase text-center max-w-2xl px-4">
+                <p className="text-lg md:text-2xl text-white/50 tracking-widest uppercase text-center max-w-2xl px-4">
                     Sculpt a physique that demands attention and an energy that commands the room.
                 </p>
             </motion.div>
@@ -95,10 +95,10 @@ export default function OverlayContent({ scrollProgress }: OverlayContentProps) 
                 style={{ opacity: opacityD }}
                 className="absolute flex flex-col items-center pointer-events-auto" // Enable pointer events for button
             >
-                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white mb-6 text-center mix-blend-difference">
+                <h2 className="text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white/90 mb-6 text-center">
                     Step Into<br />Your Best Life
                 </h2>
-                <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl mix-blend-difference">
+                <p className="text-base md:text-xl text-white/50 mb-10 tracking-widest uppercase text-center max-w-xl">
                     The only thing standing between you and your dream self is a decision.
                 </p>
                 <RainbowButton

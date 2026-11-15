@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+.page {
+  --ink: #192529;
+  --muted: #46585e;
+  --paper: #f5fbfd;
+  --white: #fff;
+  --ice: #dceef4;
+  --line: #cbdde3;
+  --coral: #ac412f;
+  --coral-hover: #882d20;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.page,
+.page * {
+  box-sizing: border-box;
+}
+
+.page :is(h1, h2, h3, p, figure, ul, ol) {
+  margin: 0;
+}
+
+.page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page :focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+
+.page [id] {
+  scroll-margin-top: 2rem;
+}
+
+.shell {
+  width: min(100% - 6rem, 76rem);
+  margin-inline: auto;
+}
+
+.skipLink {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 5;
+  transform: translateY(-200%);
+  padding: .75rem 1rem;
+  background: var(--white);
+  border-radius: .5rem;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.header {
+  border-bottom: 1px solid var(--line);
+}
+
+.header > .shell {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 4vw, 3.5rem);
+}
+
+.brand {
+  flex: none;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.brand span {
+  color: var(--coral);
+}
+
+.navigation,
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem clamp(1.1rem, 3vw, 2.6rem);
+}
+
+.navLink,
+.footerLinks a {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.navLink:hover,
+.footerLinks a:hover {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.headerContact,
+.primaryButton,
+.secondaryButton,
+.planAction {
+  display: inline-flex;
+  min-height: 3rem;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  padding: .7rem 1.3rem;
+  color: var(--ink);
+  font-size: .93rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.page :is(.headerContact, .primaryButton) {
+  border-color: var(--coral);
+  background: var(--coral);
+  color: var(--white);
+}
+
+.page :is(.headerContact, .primaryButton):hover {
+  border-color: var(--coral-hover);
+  background: var(--coral-hover);
+}
+
+.headerContact {
+  min-height: 2.75rem;
+  flex: none;
+  padding-inline: 1.1rem;
+  font-size: .84rem;
+}
+
+.page :is(.secondaryButton, .planAction) {
+  border-color: var(--ink);
+  background: transparent;
+}
+
+.page :is(.secondaryButton, .planAction):hover {
+  background: var(--ice);
+}
+
+.hero {
+  padding-block: clamp(2.6rem, 6vw, 5.6rem) clamp(3.5rem, 8vw, 7rem);
+}
+
+.hero > .shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(2rem, 6.5vw, 6.5rem);
+}
+
+.heroBody {
+  min-width: 0;
+}
+
+.page .kicker {
+  margin-bottom: 1rem;
+  color: var(--coral);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.heroTitle,
+.sectionTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: .98;
+  text-wrap: balance;
+}
+
+.heroTitle {
+  font-size: clamp(4rem, 7.5vw, 8rem);
+  letter-spacing: -.045em;
+}
+
+.heroTitle em {
+  color: var(--coral);
+  font-weight: inherit;
+}
+
+.page .heroIntro {
+  max-width: 32rem;
+  margin-top: 1.45rem;
+  color: var(--muted);
+  font-size: clamp(1.04rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: 1.65rem;
+}
+
+.page .heroNote {
+  margin-top: .8rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.page .heroNote a {
+  color: var(--coral);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.heroVisual {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: clamp(25rem, 48vw, 39rem);
+  overflow: hidden;
+  align-items: end;
+  isolation: isolate;
+  border-radius: 50% 50% .75rem .75rem / 32% 32% .75rem .75rem;
+  background: linear-gradient(145deg, #d2ebf2, #a3c9d4);
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-position: 50% 40%;
+}
+
+.imageCaption {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-self: start;
+  gap: .1rem .55rem;
+  margin: 1.25rem;
+  border-radius: 100px;
+  padding: .45rem .85rem;
+  background: var(--white);
+  color: var(--ink);
+  font-size: .77rem;
+  font-weight: 700;
+}
+
+.imageCaption span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.section {
+  padding-block: clamp(3.5rem, 7vw, 7rem);
+  border-top: 1px solid var(--line);
+}
+
+.sectionIntro {
+  max-width: 42rem;
+  margin-bottom: clamp(1.9rem, 4vw, 3.55rem);
+}
+
+.sectionTitle {
+  font-size: clamp(3rem, 5.4vw, 6rem);
+  letter-spacing: -.036em;
+}
+
+.page .sectionCopy,
+.page .contactCopy {
+  max-width: 39rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3.1vw, 3rem);
+}
+
+.page .steps {
+  display: grid;
+  padding: 0;
+  list-style: none;
+}
+
+.benefit,
+.step {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.stepNumber {
+  display: inline-grid;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  place-content: center;
+  margin-bottom: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  padding-inline: .35rem;
+  background: var(--ice);
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.benefit h3,
+.step h3 {
+  font-size: 1.14rem;
+  line-height: 1.25;
+}
+
+.page :is(.benefit, .step) p {
+  margin-top: .55rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.8rem, 2vw, 1.5rem);
+}
+
+.plan {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: clamp(1.35rem, 3vw, 2.25rem);
+  background: var(--white);
+}
+
+.featuredPlan {
+  border-color: #92b4c0;
+  background: var(--ice);
+}
+
+.planHead {
+  display: grid;
+  align-content: start;
+  gap: .65rem;
+}
+
+.planName {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: .98;
+}
+
+.planSummary {
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.page .price {
+  margin-top: 1.1rem;
+  font-size: clamp(1.9rem, 3.3vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1.1;
+}
+
+.priceSuffix,
+.term {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.page .term {
+  margin-top: .35rem;
+}
+
+.page .featureList {
+  display: grid;
+  gap: .68rem;
+  margin-block: 1.2rem 1.4rem;
+  border-top: 1px solid var(--line);
+  padding: 1.15rem 0 0;
+  list-style: none;
+}
+
+.featureList li {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: .94rem;
+  line-height: 1.5;
+}
+
+.featureList svg {
+  flex: none;
+  margin-top: .1rem;
+  color: var(--coral);
+}
+
+.planAction {
+  width: 100%;
+  margin-top: auto;
+}
+
+.page .featuredPlan .planAction {
+  border-color: var(--coral);
+  background: var(--coral);
+  color: var(--white);
+}
+
+.page .featuredPlan .planAction:hover {
+  border-color: var(--coral-hover);
+  background: var(--coral-hover);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 8vw, 8rem);
+}
+
+.aboutContent {
+  min-width: 0;
+}
+
+.about .steps {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+}
+
+.about .step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.about .stepNumber {
+  margin-bottom: 0;
+}
+
+.contact {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background: var(--ice);
+  text-align: center;
+}
+
+.page .contactCopy {
+  margin: 0 auto;
+}
+
+.page .contactCopy p {
+  margin-top: 1rem;
+}
+
+.page .contact .secondaryButton:hover {
+  background: var(--paper);
+}
+
+.contact .actions {
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding-block: 1.65rem;
+}
+
+.footer > .shell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .9rem 2rem;
+}
+
+@media (max-width: 62rem) {
+  .shell {
+    width: min(100% - 3.5rem, 76rem);
+  }
+
+  .hero > .shell {
+    gap: 2rem;
+  }
+
+  .heroVisual {
+    min-height: 24rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .shell {
+    width: min(100% - 2.5rem, 76rem);
+  }
+
+  .header > .shell {
+    min-height: 4rem;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .hero > .shell,
+  .about,
+  .planGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroTitle {
+    font-size: clamp(3.35rem, 12vw, 5.4rem);
+  }
+
+  .heroVisual {
+    min-height: clamp(23rem, 110vw, 34rem);
+  }
+
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+  }
+
+}
+
+@media (max-width: 22rem) {
+  .shell {
+    width: calc(100% - 2rem);
+  }
+
+  .headerContact {
+    padding-inline: .7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headerContact,
+  .primaryButton,
+  .secondaryButton,
+  .planAction {
+    transition: none;
+  }
+}

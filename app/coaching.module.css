@@ -221,27 +221,8 @@
 }
 
 .heroBody {
-  width: min(100%, 45rem);
-  padding-block: 4rem;
-}
-
-.kicker {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  margin: 0 0 1.45rem;
-  color: var(--pink);
-  font-size: .76rem;
-  font-weight: 700;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.kicker::before {
-  width: 1.65rem;
-  height: 1px;
-  background: currentColor;
-  content: '';
+  width: min(57%, 38rem);
+  padding-block: clamp(2.7rem, 5vw, 4rem);
 }
 
 .heroTitle,
@@ -261,6 +242,10 @@
   width: fit-content;
 }
 
+.heroTitle {
+  font-size: clamp(4.25rem, 7.25vw, 6.5rem);
+}
+
 .heroTitle em,
 .contactTitle em {
   margin-top: .12em;
@@ -275,7 +260,7 @@
 
 .heroIntro {
   max-width: 29rem;
-  margin: 1.6rem 0 0;
+  margin: 1.35rem 0 1.6rem;
   color: #f7f0e7df;
   font-size: clamp(1rem, 1.45vw, 1.18rem);
   line-height: 1.6;
@@ -288,15 +273,19 @@
   margin-top: 1.65rem;
 }
 
-.heroNote {
-  margin: .85rem 0 0;
-  color: #f7f0e7c9;
-  font-size: .85rem;
+.heroPlanLink {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .45rem;
+  color: var(--cream);
+  font-size: .92rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.heroNote a {
-  color: var(--cream);
-  font-weight: 700;
+.heroPlanLink:hover {
   text-decoration: underline;
   text-underline-offset: .22em;
 }
@@ -368,6 +357,10 @@
     left: 24%;
   }
 
+  .heroBody {
+    width: min(62%, 35rem);
+  }
+
   .heroVisual::after {
     background: linear-gradient(90deg, var(--dark), #1c111abd 16%, #1c111a20 58%, transparent 75%),
       linear-gradient(0deg, #1c111abf, transparent 34%);
@@ -394,7 +387,7 @@
 
   .heroVisual {
     inset: 0 0 auto;
-    height: clamp(21rem, 96vw, 35rem);
+    height: clamp(19rem, 83vw, 30rem);
   }
 
   .heroImage {
@@ -406,19 +399,17 @@
   }
 
   .heroBody {
-    padding-block: clamp(14.25rem, 67vw, 27rem) 2.55rem;
+    width: 100%;
+    padding-block: clamp(12.4rem, 55vw, 21rem) 2.15rem;
   }
 
   .heroTitle {
     font-size: clamp(3.8rem, 12.5vw, 6.2rem);
   }
 
-  .kicker {
-    margin-bottom: 1rem;
-  }
-
   .heroIntro {
     margin-top: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .imageCaption {

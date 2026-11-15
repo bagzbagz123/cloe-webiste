@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, MessageCircle, Utensils } from "lucide-react";
+import { coachingLink } from "@/lib/coaching-contact";
+import CoachingApplication from "./coaching-application";
 import styles from "./coaching.module.css";
 import sections from "./coaching-sections.module.css";
 
@@ -10,14 +12,6 @@ export const metadata: Metadata = {
 };
 
 const instagram = "https://www.instagram.com/clotiicr/";
-const instagramDm = "https://ig.me/m/clotiicr";
-const whatsappNumber = "17866356037";
-
-function coachingLink(plan?: string) {
-  const offer = plan ? `${plan} coaching` : "your online coaching";
-  const message = `Hi Clotilde! I'm interested in ${offer}. Can you tell me how to get started?`;
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-}
 
 const benefits = [
   {
@@ -39,6 +33,7 @@ const benefits = [
 
 const packages = [
   {
+    id: "essential",
     name: "Essential",
     months: 6,
     monthly: 130,
@@ -52,6 +47,7 @@ const packages = [
     ],
   },
   {
+    id: "premium",
     name: "Premium",
     months: 3,
     monthly: 180,
@@ -68,16 +64,16 @@ const packages = [
 
 const steps = [
   {
-    title: "Send a message",
-    copy: "Tell Clotilde a little about what you want to achieve and how you train now.",
+    title: "Fill out the application",
+    copy: "Tell Clotilde what you want to achieve and which plan you’re considering.",
   },
   {
-    title: "Find your fit",
-    copy: "Talk through the two packages and see which commitment and level of support suit you.",
+    title: "Send it on WhatsApp",
+    copy: "Review your draft in WhatsApp and tap Send to share your answers with Clotilde.",
   },
   {
-    title: "Start your plan",
-    copy: "Get your training plan and agree on how you’ll check in each week.",
+    title: "Find the right plan",
+    copy: "Clotilde will help you choose the level of support that fits and explain how to get started.",
   },
 ];
 
@@ -92,7 +88,7 @@ const questions = [
   },
   {
     question: "How do I start?",
-    answer: "Send Clotilde a WhatsApp message with your goals and the plan you’re considering. She’ll help you choose and walk you through getting started.",
+    answer: "Fill out the coaching application, then review your draft in WhatsApp and tap Send. Clotilde will help you choose a plan and walk you through getting started.",
   },
 ];
 
@@ -107,7 +103,7 @@ export default function Home() {
             <a className={styles.navLink} href="#coaching">Coaching</a>
             <a className={styles.navLink} href="#about">Meet Clotilde</a>
           </nav>
-          <a className={styles.headerContact} href={coachingLink()}>WhatsApp <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <a className={styles.headerContact} href="#apply">Apply now <ArrowDown size={16} aria-hidden="true" /></a>
         </div>
       </header>
 
@@ -119,14 +115,10 @@ export default function Home() {
           </figure>
           <div className={styles.shell}>
             <div className={styles.heroBody}>
-              <p className={styles.kicker}>1:1 online coaching</p>
               <h1 className={styles.heroTitle} id="hero-title"><span>Get stronger.</span><em>Feel more like you.</em></h1>
-              <p className={styles.heroIntro}>Personalized training, nutrition guidance, and weekly support to help you get stronger and feel more confident in the gym.</p>
-              <div className={styles.actions}>
-                <a className={styles.primaryButton} href={coachingLink()}><MessageCircle size={20} aria-hidden="true" /> Chat on WhatsApp</a>
-                <a className={styles.secondaryButton} href="#coaching">See coaching plans <ArrowDown size={16} aria-hidden="true" /></a>
-              </div>
-              <p className={styles.heroNote}>Prefer Instagram? <a href={instagramDm}>Send a DM</a>.</p>
+              <p className={styles.heroIntro}>1:1 online coaching with personalized training, nutrition guidance, and weekly support to help you feel more confident in the gym.</p>
+              <CoachingApplication />
+              <a className={styles.heroPlanLink} href="#coaching">See coaching plans <ArrowDown size={16} aria-hidden="true" /></a>
             </div>
           </div>
         </section>
@@ -167,7 +159,7 @@ export default function Home() {
                   <ul className={sections.featureList}>
                     {plan.features.map((feature) => <li key={feature}><Check size={18} aria-hidden="true" />{feature}</li>)}
                   </ul>
-                  <a className={sections.planAction} href={coachingLink(plan.name)}>Ask about {plan.name} <ArrowUpRight size={18} aria-hidden="true" /></a>
+                  <a className={sections.planAction} href={`/?plan=${plan.id}#apply`}>Apply for {plan.name} <ArrowUpRight size={18} aria-hidden="true" /></a>
                 </article>
               ))}
             </div>
@@ -214,11 +206,11 @@ export default function Home() {
           <div className={styles.shell}>
             <div className={styles.contactCopy}>
               <h2 className={styles.contactTitle} id="contact-title">Let’s talk <em>about your goals.</em></h2>
-              <p>Have a question about either plan? Send a message and tell me what you’re working toward.</p>
+              <p>Tell me what you’re working toward in the application, or message me with a question about either plan.</p>
             </div>
             <div className={styles.actions}>
-              <a className={styles.primaryButton} href={coachingLink()}><MessageCircle size={20} aria-hidden="true" /> Chat on WhatsApp</a>
-              <a className={styles.secondaryButton} href={instagramDm}>DM on Instagram <ArrowUpRight size={18} aria-hidden="true" /></a>
+              <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowUpRight size={18} aria-hidden="true" /></a>
+              <a className={styles.secondaryButton} href={coachingLink()}><MessageCircle size={18} aria-hidden="true" /> Chat on WhatsApp</a>
             </div>
           </div>
         </section>

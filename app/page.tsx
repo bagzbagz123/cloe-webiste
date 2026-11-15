@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowDownRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, MessageCircle, Utensils } from "lucide-react";
 import styles from "./coaching.module.css";
+import sections from "./coaching-sections.module.css";
 
 export const metadata: Metadata = {
   title: "Cloe Fitness | Online Coaching with Clotilde",
@@ -22,14 +23,17 @@ const benefits = [
   {
     title: "Training for your goals",
     copy: "A tailored workout plan that takes your experience, schedule, and equipment into account.",
+    icon: Dumbbell,
   },
   {
     title: "Nutrition guidance",
     copy: "Practical guidance for building eating habits that support your training and fit your routine.",
+    icon: Utensils,
   },
   {
     title: "Weekly accountability",
     copy: "Check in each week to review your progress, ask questions, and make adjustments with Clotilde.",
+    icon: ClipboardCheck,
   },
 ];
 
@@ -77,13 +81,28 @@ const steps = [
   },
 ];
 
+const questions = [
+  {
+    question: "Do I need gym experience?",
+    answer: "Your workouts are built around your current experience and the equipment you have access to. Tell Clotilde how you train now so she can help you get started.",
+  },
+  {
+    question: "What’s the difference between the plans?",
+    answer: "Essential gives you six months of structured coaching and weekly check-ins. Premium is a three-month block with a more detailed weekly review of your training and nutrition.",
+  },
+  {
+    question: "How do I start?",
+    answer: "Send Clotilde a WhatsApp message with your goals and the plan you’re considering. She’ll help you choose and walk you through getting started.",
+  },
+];
+
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} id="top">
       <a className={styles.skipLink} href="#main">Skip to content</a>
       <header className={styles.header}>
         <div className={styles.shell}>
-          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">CLOE<span>FITNESS</span></a>
+          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">cloe<span>fitness</span></a>
           <nav className={styles.navigation} aria-label="Main navigation">
             <a className={styles.navLink} href="#coaching">Coaching</a>
             <a className={styles.navLink} href="#about">Meet Clotilde</a>
@@ -93,79 +112,80 @@ export default function Home() {
       </header>
 
       <main id="main">
-        <section className={styles.hero} id="top" aria-labelledby="hero-title">
+        <section className={styles.hero} aria-labelledby="hero-title">
+          <figure className={styles.heroVisual}>
+            <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) 100vw, 66vw" priority />
+            <figcaption className={styles.imageCaption}><strong>Clotilde</strong><span>Personal trainer · Miami</span></figcaption>
+          </figure>
           <div className={styles.shell}>
             <div className={styles.heroBody}>
-              <p className={styles.kicker}>Online coaching with Clotilde</p>
-              <h1 className={styles.heroTitle} id="hero-title">Get stronger.<br /><em>Feel more like you.</em></h1>
+              <p className={styles.kicker}>1:1 online coaching</p>
+              <h1 className={styles.heroTitle} id="hero-title"><span>Get stronger.</span><em>Feel more like you.</em></h1>
               <p className={styles.heroIntro}>Personalized training, nutrition guidance, and weekly support to help you get stronger and feel more confident in the gym.</p>
               <div className={styles.actions}>
                 <a className={styles.primaryButton} href={coachingLink()}><MessageCircle size={20} aria-hidden="true" /> Chat on WhatsApp</a>
-                <a className={styles.secondaryButton} href="#coaching">See coaching plans <ArrowDownRight size={18} aria-hidden="true" /></a>
+                <a className={styles.secondaryButton} href="#coaching">See coaching plans <ArrowDown size={16} aria-hidden="true" /></a>
               </div>
               <p className={styles.heroNote}>Prefer Instagram? <a href={instagramDm}>Send a DM</a>.</p>
             </div>
-            <figure className={styles.heroVisual}>
-              <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" width={2070} height={1921} alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) 100vw, 44vw" priority />
-              <figcaption className={styles.imageCaption}><strong>Clotilde</strong><span>Personal trainer · Miami</span></figcaption>
-            </figure>
           </div>
         </section>
 
-        <section className={styles.section} aria-labelledby="benefits-title">
+        <section className={`${sections.section} ${sections.methodSection}`} aria-labelledby="benefits-title">
           <div className={styles.shell}>
-            <div className={styles.sectionIntro}>
-              <h2 className={styles.sectionTitle} id="benefits-title">What coaching includes</h2>
-              <p className={styles.sectionCopy}>A plan for the time you have, with a coach you can check in with as you go.</p>
+            <div className={sections.sectionIntro}>
+              <h2 className={sections.sectionTitle} id="benefits-title">A plan that <em>fits your life.</em></h2>
+              <p className={sections.sectionCopy}>Training, nutrition, and weekly check-ins with Clotilde, built around your goals and the time you have.</p>
             </div>
-            <div className={styles.benefits}>
-              {benefits.map((benefit) => (
-                <article className={styles.benefit} key={benefit.title}>
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.copy}</p>
+            <div className={sections.benefits}>
+              {benefits.map(({ title, copy, icon: Icon }) => (
+                <article className={sections.benefit} key={title}>
+                  <span className={sections.benefitIcon}><Icon size={20} strokeWidth={1.5} aria-hidden="true" /></span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.section} id="coaching" aria-labelledby="coaching-title">
+        <section className={`${sections.section} ${sections.plansSection}`} id="coaching" aria-labelledby="coaching-title">
           <div className={styles.shell}>
-            <div className={styles.sectionIntro}>
-              <h2 className={styles.sectionTitle} id="coaching-title">Choose your coaching plan</h2>
-              <p className={styles.sectionCopy}>Both plans are one-to-one and fully online. All prices are in USD.</p>
+            <div className={sections.sectionIntro}>
+              <h2 className={sections.sectionTitle} id="coaching-title">Choose your <em>coaching plan.</em></h2>
+              <p className={sections.sectionCopy}>Both plans are one-to-one and fully online. All prices are in USD.</p>
             </div>
-            <div className={styles.planGrid}>
+            <div className={sections.planGrid}>
               {packages.map((plan) => (
-                <article className={`${styles.plan} ${plan.name === "Premium" ? styles.featuredPlan : ""}`} key={plan.name}>
-                  <div className={styles.planHead}>
-                    <h3 className={styles.planName}>{plan.name}</h3>
-                    <p className={styles.planSummary}>{plan.summary}</p>
+                <article className={`${sections.plan} ${plan.name === "Premium" ? sections.featuredPlan : ""}`} key={plan.name}>
+                  <div className={sections.planHead}>
+                    <h3 className={sections.planName}>{plan.name}</h3>
+                    <p className={sections.planSummary}>{plan.summary}</p>
                   </div>
-                  <p className={styles.price}>${plan.monthly}<span className={styles.priceSuffix}> / month</span></p>
-                  <p className={styles.term}>{plan.months}-month commitment · ${(plan.months * plan.monthly).toLocaleString("en-US")} total</p>
-                  <ul className={styles.featureList}>
+                  <p className={sections.price}>${plan.monthly}<span className={sections.priceSuffix}> / month</span></p>
+                  <p className={sections.term}>{plan.months}-month commitment · ${(plan.months * plan.monthly).toLocaleString("en-US")} total</p>
+                  <ul className={sections.featureList}>
                     {plan.features.map((feature) => <li key={feature}><Check size={18} aria-hidden="true" />{feature}</li>)}
                   </ul>
-                  <a className={styles.planAction} href={coachingLink(plan.name)}>Ask about {plan.name} <ArrowUpRight size={18} aria-hidden="true" /></a>
+                  <a className={sections.planAction} href={coachingLink(plan.name)}>Ask about {plan.name} <ArrowUpRight size={18} aria-hidden="true" /></a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.section} id="about" aria-labelledby="about-title">
+        <section className={`${sections.section} ${sections.aboutSection}`} id="about" aria-labelledby="about-title">
           <div className={styles.shell}>
-            <div className={styles.about}>
-              <div className={styles.aboutContent}>
-                <p className={styles.kicker}>Meet your coach</p>
-                <h2 className={styles.sectionTitle} id="about-title">Hi, I’m Clotilde.</h2>
-                <p className={styles.sectionCopy}>I started triathlon at eight and later competed in weightlifting in France. I’m now a personal trainer based in Miami, helping clients build strength and find a routine they can stick with.</p>
+            <div className={sections.about}>
+              <div className={sections.aboutContent}>
+                <p className={sections.eyebrow}>Meet your coach</p>
+                <h2 className={sections.sectionTitle} id="about-title">Hi, I’m <em>Clotilde.</em></h2>
+                <p className={sections.sectionCopy}>I started triathlon at eight and later competed in weightlifting in France. I’m now a personal trainer based in Miami, helping clients build strength and find a routine they can stick with.</p>
               </div>
-              <ol className={styles.steps} aria-label="How to get started">
+              <ol className={sections.steps} aria-label="How to get started">
                 {steps.map((step, index) => (
-                  <li className={styles.step} key={step.title}>
-                    <span className={styles.stepNumber} aria-hidden="true">0{index + 1}</span>
+                  <li className={sections.step} key={step.title}>
+                    <span className={sections.stepNumber} aria-hidden="true">0{index + 1}</span>
                     <div><h3>{step.title}</h3><p>{step.copy}</p></div>
                   </li>
                 ))}
@@ -174,10 +194,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section className={`${sections.section} ${sections.faqSection}`} aria-labelledby="faq-title">
+          <div className={styles.shell}>
+            <div className={sections.faqLayout}>
+              <h2 className={sections.sectionTitle} id="faq-title">Common <em>questions.</em></h2>
+              <div className={sections.faqList}>
+                {questions.map(({ question, answer }) => (
+                  <details className={sections.faqItem} key={question}>
+                    <summary>{question}<ChevronDown size={20} strokeWidth={1.5} aria-hidden="true" /></summary>
+                    <p>{answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className={styles.contact} id="contact" aria-labelledby="contact-title">
           <div className={styles.shell}>
             <div className={styles.contactCopy}>
-              <h2 className={styles.sectionTitle} id="contact-title">Let’s talk about your goals.</h2>
+              <h2 className={styles.contactTitle} id="contact-title">Let’s talk <em>about your goals.</em></h2>
               <p>Have a question about either plan? Send a message and tell me what you’re working toward.</p>
             </div>
             <div className={styles.actions}>
@@ -190,7 +226,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <div className={styles.shell}>
-          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">CLOE<span>FITNESS</span></a>
+          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">cloe<span>fitness</span></a>
           <div className={styles.footerLinks}>
             <a href="#coaching">Coaching plans</a>
             <a href={instagram}>Instagram</a>

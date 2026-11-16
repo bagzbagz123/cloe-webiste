@@ -80,22 +80,28 @@ export default function Home() {
 
       <main className={styles.main} id="main">
         <section className={styles.hero} aria-labelledby="hero-title">
-          <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="100vw" priority />
-          <div className={styles.heroContent}>
-            <p className={styles.eyebrow}>Personal trainer in Miami · Online coaching</p>
-            <h1 id="hero-title">Get stronger.<br /><em>Feel more like you.</em></h1>
-            <p>One-to-one training, nutrition guidance, and weekly check-ins with Clotilde.</p>
-            <div className={styles.actions}>
-              <a className={styles.heroPrimary} href="#apply">Apply for coaching <ArrowDown size={16} aria-hidden="true" /></a>
-              <a className={styles.heroSecondary} href="#coaching">Explore coaching plans</a>
+          <div className={`${styles.shell} ${styles.heroLayout}`}>
+            <div className={styles.heroContent}>
+              <p className={styles.eyebrow}>1:1 online fitness coaching</p>
+              <h1 id="hero-title">Get stronger.<em>Feel more like you.</em></h1>
+              <p className={styles.heroLead}>Personalized training, nutrition guidance, and weekly check-ins with Clotilde.</p>
+              <div className={styles.actions}>
+                <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowDown size={16} aria-hidden="true" /></a>
+                <a className={styles.textLink} href="#coaching">Explore coaching plans <ArrowUpRight size={15} aria-hidden="true" /></a>
+              </div>
             </div>
+            <figure className={styles.heroPortrait}>
+              <div className={styles.heroFrame}>
+                <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1300px) 48vw, 605px" priority />
+              </div>
+              <figcaption><span>Clotilde</span><span>Personal trainer · Miami</span></figcaption>
+            </figure>
           </div>
         </section>
 
         <div className={styles.applicationBand}>
           <div className={`${styles.shell} ${styles.applicationLayout}`}>
             <div className={styles.applicationIntro}>
-              <p className={styles.eyebrow}>Let’s get to know each other</p>
               <p className={styles.appHeading}>Start with <em>your goals.</em></p>
               <p>Answer five quick questions. You’ll get a WhatsApp draft to review and send to me when you’re ready.</p>
             </div>
@@ -106,28 +112,30 @@ export default function Home() {
         </div>
 
         <section className={styles.aboutSection} id="about" aria-labelledby="about-title">
-          <div className={`${styles.shell} ${styles.aboutLayout}`}>
-            <div className={styles.biography}>
-              <p className={styles.eyebrow}>Meet your coach</p>
-              <h2 className={styles.sectionTitle} id="about-title">Hi, I’m <em>Clotilde.</em></h2>
+          <div className={styles.shell}>
+            <div className={styles.aboutLayout}>
               <figure className={styles.aboutPhoto}>
-                <Image className={styles.aboutImage} src="/images/clotilde-gym.webp" alt="Clotilde smiling in black workout clothes at the gym" width={908} height={1210} sizes="(max-width: 600px) 72vw, 268px" />
+                <Image className={styles.aboutImage} src="/images/clotilde-gym.webp" alt="Clotilde smiling in black workout clothes at the gym" width={908} height={1210} sizes="(max-width: 760px) calc(100vw - 40px), 380px" />
               </figure>
-              <p>I started racing triathlons in Costa Rica at eight, then competed in weightlifting in France. I’m now a certified personal trainer based in Miami.</p>
-              <p>I spent years learning what helped me stay consistent. Now I coach people who want to get stronger and build a routine they can stick with.</p>
-              <a className={styles.textLink} href={instagram}><Instagram size={16} aria-hidden="true" /> Find me on Instagram <ArrowUpRight size={14} aria-hidden="true" /></a>
+              <div className={styles.biography}>
+                <p className={styles.eyebrow}>Meet your coach</p>
+                <h2 className={styles.sectionTitle} id="about-title">Hi, I’m <em>Clotilde.</em></h2>
+                <p>I started racing triathlons in Costa Rica at eight, then competed in weightlifting in France. I’m now a certified personal trainer based in Miami.</p>
+                <p>I spent years learning what helped me stay consistent. Now I coach people who want to get stronger and build a routine they can stick with.</p>
+                <a className={styles.textLink} href={instagram}><Instagram size={16} aria-hidden="true" /> Find me on Instagram <ArrowUpRight size={14} aria-hidden="true" /></a>
+              </div>
             </div>
-            <div className={styles.benefits}>
-              <p className={styles.eyebrow}>What we’ll work on</p>
-              {benefits.map(({ title, copy, icon: Icon }) => (
-                <article className={styles.benefit} key={title}>
-                  <span className={styles.benefitIcon}><Icon size={22} strokeWidth={1.6} aria-hidden="true" /></span>
-                  <div>
-                    <h3>{title}</h3>
+            <div className={styles.method}>
+              <h3 className={styles.eyebrow}>What we’ll work on</h3>
+              <div className={styles.benefits}>
+                {benefits.map(({ title, copy, icon: Icon }) => (
+                  <article className={styles.benefit} key={title}>
+                    <Icon size={24} strokeWidth={1.45} aria-hidden="true" />
+                    <h4>{title}</h4>
                     <p>{copy}</p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -135,9 +143,8 @@ export default function Home() {
         <section className={styles.plansSection} id="coaching" aria-labelledby="coaching-title">
           <div className={styles.shell}>
             <div className={styles.sectionIntro}>
-              <p className={styles.eyebrow}>Online coaching</p>
               <h2 className={styles.sectionTitle} id="coaching-title">Find your <em>coaching plan.</em></h2>
-              <p>Both plans are one-to-one and fully online. All prices are in USD.</p>
+              <p>Both plans include one-to-one online coaching. Prices are in USD.</p>
             </div>
 
             <div className={styles.planGrid}>
@@ -179,12 +186,15 @@ export default function Home() {
 
         <section className={styles.contact} id="contact" aria-labelledby="contact-title">
           <div className={styles.shell}>
-            <p className={styles.eyebrow}>Work with Clotilde</p>
-            <h2 className={styles.sectionTitle} id="contact-title">Let’s talk <em>about your goals.</em></h2>
-            <p>Ready to get started? Fill out the application, or send me a WhatsApp message if you have a question.</p>
-            <div className={styles.actions}>
-              <a className={styles.heroPrimary} href="#apply">Apply for coaching <ArrowUpRight size={16} aria-hidden="true" /></a>
-              <a className={styles.heroSecondary} href={coachingLink()}><MessageCircle size={17} aria-hidden="true" /> Chat on WhatsApp</a>
+            <div className={styles.contactLayout}>
+              <h2 className={styles.sectionTitle} id="contact-title">Let’s talk <em>about your goals.</em></h2>
+              <div>
+                <p>Fill out the application to get started, or send me a WhatsApp message if you have a question.</p>
+                <div className={styles.actions}>
+                  <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowUpRight size={16} aria-hidden="true" /></a>
+                  <a className={styles.textLink} href={coachingLink()}><MessageCircle size={17} aria-hidden="true" /> Chat on WhatsApp</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

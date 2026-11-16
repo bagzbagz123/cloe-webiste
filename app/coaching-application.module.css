@@ -1,7 +1,7 @@
 .application {
   width: min(100%, 29rem);
   margin-block: 1.4rem 1.15rem;
-  border: 1px solid #ddc7ce;
+  border: 1px solid var(--line);
   border-radius: 1rem;
   padding: clamp(1rem, 2.6vw, 1.55rem);
   background: var(--cream);
@@ -10,12 +10,12 @@
 }
 
 .application ::selection {
-  background: #edafd0;
+  background: var(--rose-light);
   color: var(--ink);
 }
 
 .application :is(button, input, textarea, a):focus-visible {
-  outline: 2px solid #9a376a;
+  outline: 2px solid var(--rose);
   outline-offset: 3px;
 }
 
@@ -33,7 +33,7 @@
 
 .topline > span {
   flex: none;
-  color: #674353;
+  color: var(--muted-ink);
   font-size: .8rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -43,7 +43,7 @@
   height: .3rem;
   overflow: hidden;
   border-radius: 1rem;
-  background: #e5d3d8;
+  background: var(--blush);
   margin-block: .75rem 1rem;
 }
 
@@ -51,7 +51,7 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #a14575;
+  background: var(--rose);
   transition: width .26s cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -91,10 +91,10 @@
 
 .choice {
   justify-content: space-between;
-  border: 1px solid #caaeb8;
+  border: 1px solid var(--control-line);
   border-radius: .4rem;
   padding: .6rem .65rem;
-  background: #fff9f3;
+  background: var(--cream);
   color: var(--ink);
   text-align: left;
 }
@@ -105,14 +105,14 @@
 
 .choice:hover,
 .choice[aria-pressed="true"] {
-  border-color: #9a376a;
-  background: #f6dae7;
+  border-color: var(--rose);
+  background: var(--blush);
 }
 
 .hint,
 .error {
   margin: 0;
-  color: #674353;
+  color: var(--muted-ink);
   font-size: .85rem;
   line-height: 1.4;
 }
@@ -131,19 +131,19 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 2.85rem;
-  border: 1px solid #b597a5;
+  border: 1px solid var(--control-line);
   border-radius: .4rem;
   padding: .62rem .7rem;
-  background: #fff9f3;
+  background: var(--cream);
   color: var(--ink);
-  caret-color: #9a376a;
+  caret-color: var(--rose);
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.35;
 }
 
 .field::placeholder {
-  color: #765466;
+  color: var(--muted-ink);
 }
 
 .field[aria-invalid="true"] {
@@ -166,7 +166,7 @@ textarea.field {
   border: 0;
   padding: 0 .35rem 0 0;
   background: transparent;
-  color: #674353;
+  color: var(--muted-ink);
 }
 
 .back:hover {
@@ -184,7 +184,7 @@ textarea.field {
 }
 
 .next:hover {
-  background: #543044;
+  background: var(--plum-deep);
 }
 
 @media (max-width: 375px) {

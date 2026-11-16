@@ -47,12 +47,14 @@ export default function JeanneResults() {
     <section className={styles.section} id="transformations" aria-labelledby="transformations-title">
       <div className={styles.shell}>
         <header className={styles.intro}>
-          <h2 id="transformations-title">Client transformations</h2>
-          <p>These before-and-after photos show results from Jeanne MLG’s coaching clients.</p>
-          <a className={styles.source} href={source}>
-            View Jeanne MLG Coaching’s original gallery
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
+          <h2 id="transformations-title">Client <em>transformations</em></h2>
+          <div className={styles.credit}>
+            <p>These before-and-after photos show results from <strong>Jeanne MLG’s coaching clients</strong>.</p>
+            <a className={styles.source} href={source}>
+              View Jeanne MLG Coaching’s original gallery
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
+          </div>
         </header>
 
         <ul className={styles.grid}>
@@ -61,19 +63,22 @@ export default function JeanneResults() {
               <button
                 className={styles.tile}
                 type="button"
-                aria-label={`Enlarge comparison ${index + 1} of ${count}: ${comparison.view.toLowerCase()}`}
+                aria-label={`Enlarge comparison ${index + 1} of ${count}, ${comparison.view.toLowerCase()}`}
                 aria-haspopup="dialog"
                 onClick={() => openComparison(index)}
               >
-                <Image
-                  src={`/images/jeanne-results/transformation-${comparison.number}.webp`}
-                  width={comparison.width ?? 500}
-                  height={comparison.height ?? 500}
-                  alt=""
-                  unoptimized
-                />
-                <span className={styles.expand} aria-hidden="true">
-                  <Maximize2 size={15} />
+                <span className={styles.frame}>
+                  <Image
+                    src={`/images/jeanne-results/transformation-${comparison.number}.webp`}
+                    width={comparison.width ?? 500}
+                    height={comparison.height ?? 500}
+                    alt=""
+                    unoptimized
+                  />
+                </span>
+                <span className={styles.tileDetails} aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <Maximize2 size={13} />
                 </span>
               </button>
             </li>

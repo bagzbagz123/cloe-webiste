@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { ArrowDown, Menu, X } from "lucide-react";
 import { useRef, useState, type KeyboardEvent } from "react";
 import styles from "./clotilde-nav.module.css";
 
@@ -35,9 +35,9 @@ export default function ClotildeNav() {
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="clotilde-navigation"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((open) => !open)}
         >
-          {isOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}
+          {isOpen ? <X size={22} strokeWidth={1.5} aria-hidden="true" /> : <Menu size={22} strokeWidth={1.5} aria-hidden="true" />}
         </button>
         <nav
           className={styles.navigation}
@@ -45,13 +45,15 @@ export default function ClotildeNav() {
           aria-label="Main navigation"
           data-open={isOpen}
         >
-          {links.map(({ href, label }) => (
-            <a className={styles.link} key={href} href={href} onClick={() => setIsOpen(false)}>
-              {label}
-            </a>
-          ))}
+          <div className={styles.sectionLinks}>
+            {links.map(({ href, label }) => (
+              <a className={styles.link} key={href} href={href} onClick={() => setIsOpen(false)}>
+                {label}
+              </a>
+            ))}
+          </div>
           <a className={styles.apply} href="#apply" onClick={() => setIsOpen(false)}>
-            Apply for coaching
+            Apply for coaching <ArrowDown size={15} strokeWidth={1.6} aria-hidden="true" />
           </a>
         </nav>
       </div>

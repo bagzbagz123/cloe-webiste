@@ -1,0 +1,185 @@
+.section {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  background: var(--paper);
+  color: var(--espresso);
+  font-family: var(--body);
+  scroll-margin-top: 5rem;
+}
+
+.shell {
+  width: min(calc(100% - clamp(2rem, 8vw, 5rem)), 1120px);
+  margin-inline: auto;
+}
+
+.intro {
+  max-width: 39rem;
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.intro h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.35rem, 6vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.intro p {
+  margin: 1.125rem 0 0;
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+
+.source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  margin-top: 0.25rem;
+  color: var(--espresso);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.22em;
+}
+
+.source svg {
+  flex-shrink: 0;
+}
+
+.source:hover {
+  text-decoration-color: currentColor;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.55rem, 2vw, 1.125rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: var(--card);
+  color: var(--espresso);
+  cursor: zoom-in;
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.expand {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.tile:hover,
+.dialogButton:hover {
+  border-color: var(--espresso);
+}
+
+.source:focus-visible,
+.tile:focus-visible,
+.dialogButton:focus-visible {
+  outline: 2px solid var(--espresso);
+  outline-offset: 3px;
+}
+
+.dialog {
+  box-sizing: border-box;
+  width: min(calc(100% - 1.5rem), 35rem);
+  max-height: calc(100dvh - 1.5rem);
+  margin: auto;
+  padding: 0.75rem;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--card);
+  color: var(--espresso);
+  font-family: var(--body);
+}
+
+.dialog::backdrop {
+  background: rgb(38 20 13 / 72%);
+}
+
+.dialogBar,
+.dialogNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dialogBar {
+  margin-bottom: 0.75rem;
+}
+
+.dialogBar p {
+  margin: 0 0 0 0.25rem;
+  color: var(--muted-ink);
+  font-size: 0.875rem;
+}
+
+.dialogImage {
+  display: block;
+  width: 100%;
+  height: min(34rem, max(8rem, calc(100dvh - 9rem)));
+  margin-inline: auto;
+  border-radius: 0.35rem;
+  background: var(--paper);
+  object-fit: contain;
+}
+
+.dialogNavigation {
+  margin-top: 0.75rem;
+}
+
+.dialogButton {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--espresso);
+  cursor: pointer;
+}
+
+@media (min-width: 620px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

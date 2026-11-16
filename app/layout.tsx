@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CloFitness",
-  description: "Personal fitness Coach",
+  title: "Clotilde | Online Fitness Coaching",
+  description: "Personalized online strength coaching, nutrition guidance, and weekly check-ins with Clotilde. Explore Essential and Premium coaching.",
 };
 
 export default function RootLayout({

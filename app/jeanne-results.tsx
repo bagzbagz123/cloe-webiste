@@ -47,7 +47,7 @@ export default function JeanneResults() {
     <section className={styles.section} id="transformations" aria-labelledby="transformations-title">
       <div className={styles.shell}>
         <header className={styles.intro}>
-          <h2 id="transformations-title">Client <em>transformations</em></h2>
+          <h2 id="transformations-title">Client <span>transformations</span></h2>
           <div className={styles.credit}>
             <p>These before-and-after photos show results from <strong>Jeanne MLG’s coaching clients</strong>.</p>
             <a className={styles.source} href={source}>

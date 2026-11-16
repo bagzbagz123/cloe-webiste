@@ -81,11 +81,15 @@ export default function Home() {
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="hero-title">
-          <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="100vw" priority />
-          <div className={styles.heroContent}>
-            <h1 id="hero-title">Clotilde Fitness</h1>
-            <p className={styles.heroLead}>Personalized online fitness coaching</p>
-            <CoachingApplication />
+          <div className={`${styles.shell} ${styles.heroLayout}`}>
+            <figure className={styles.heroPortrait}>
+              <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1300px) 45vw, 590px" priority />
+            </figure>
+            <div className={styles.heroContent}>
+              <h1 id="hero-title">Clotilde Fitness</h1>
+              <p className={styles.heroLead}>Personalized online fitness coaching</p>
+              <CoachingApplication />
+            </div>
           </div>
         </section>
 

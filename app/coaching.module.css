@@ -48,7 +48,7 @@
   text-align: center;
 }
 
-.heroImage { z-index: -2; object-fit: cover; object-position: 50% 35%; }
+.heroImage { z-index: -2; object-fit: cover; object-position: 50% 27%; }
 .hero::after {
   position: absolute;
   z-index: -1;

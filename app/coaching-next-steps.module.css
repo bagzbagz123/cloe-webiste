@@ -1,0 +1,92 @@
+.section {
+  padding-block: var(--section-space, 4rem);
+  background: var(--paper);
+  color: var(--espresso);
+}
+
+.layout {
+  display: grid;
+  width: min(var(--rail, 76rem), 100% - 2 * var(--gutter, 1.25rem));
+  gap: 1.45rem;
+  margin-inline: auto;
+}
+
+.content h2 {
+  margin: 0 0 1.35rem;
+  font: 400 clamp(1.85rem, 5.1vw, 3.15rem)/1.2 var(--display);
+  letter-spacing: -.035em;
+}
+
+.steps {
+  display: grid;
+  gap: .72rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(.72rem, 2vw, 1.15rem);
+  border-radius: 1.25rem;
+  padding: clamp(1rem, 2.4vw, 1.55rem);
+  background: var(--form-accent, #d8f9ff);
+}
+
+.number {
+  display: grid;
+  width: 2.25rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--espresso);
+  color: var(--card);
+  font: 650 .9rem/1 var(--body);
+}
+
+.step h3 {
+  margin: 0 0 .22rem;
+  font: 600 clamp(1.05rem, 2.5vw, 1.28rem)/1.28 var(--body);
+}
+
+.step p {
+  margin: 0;
+  font: 400 .94rem/1.5 var(--body);
+}
+
+.photo {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 1.25rem;
+  background: var(--blush);
+}
+
+.photo img {
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+@media (min-width: 761px) {
+  .layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.6rem, 4vw, 3.5rem);
+  }
+
+  .content {
+    grid-area: 1 / 2;
+    align-self: center;
+    padding-block: .75rem;
+  }
+
+  .photo {
+    grid-area: 1 / 1;
+    min-height: clamp(26rem, 36vw, 34rem);
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+}

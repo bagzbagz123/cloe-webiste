@@ -23,10 +23,10 @@
 .intro h2 {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(2.05rem, 5.8vw, 4.65rem);
-  font-weight: 760;
-  line-height: 0.94;
-  letter-spacing: -0.062em;
+  font-size: clamp(2rem, 4.2vw, 3.65rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
 }
 
 .intro h2 span {

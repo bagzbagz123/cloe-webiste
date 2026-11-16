@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, Instagram, MessageCircle, Utensils } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, Instagram, MessageCircle, Utensils } from "lucide-react";
 import { coachingLink } from "@/lib/coaching-contact";
 import CoachingApplication from "./coaching-application";
 import ClotildeNav from "./clotilde-nav";
 import JeanneResults from "./jeanne-results";
+import CoachingNextSteps from "./coaching-next-steps";
 import styles from "./coaching.module.css";
 
 const instagram = "https://www.instagram.com/clotiicr/";
@@ -78,63 +79,32 @@ export default function Home() {
       <a className={styles.skipLink} href="#main">Skip to content</a>
       <ClotildeNav />
 
-      <main className={styles.main} id="main">
+      <main id="main">
         <section className={styles.hero} aria-labelledby="hero-title">
-          <div className={styles.heroLayout}>
-            <div className={styles.heroContent}>
-              <p className={styles.eyebrow}>Online fitness coaching</p>
-              <h1 id="hero-title">Get stronger. <span>Stay on track.</span></h1>
-              <p className={styles.heroLead}>Train one-to-one with Clotilde. Build a fitness routine that fits your goals, your schedule, and your life.</p>
-              <div className={styles.actions}>
-                <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowDown size={16} aria-hidden="true" /></a>
-                <a className={styles.textLink} href="#coaching">Explore coaching plans <ArrowUpRight size={15} aria-hidden="true" /></a>
-              </div>
-            </div>
-            <div className={styles.heroPortrait}>
-              <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) 100vw, 52vw" priority />
-            </div>
+          <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="100vw" priority />
+          <div className={styles.heroContent}>
+            <h1 id="hero-title">Clotilde Fitness</h1>
+            <p className={styles.heroLead}>Personalized online fitness coaching</p>
+            <CoachingApplication />
           </div>
         </section>
 
-        <section className={styles.method} aria-label="What’s included in coaching">
-          <div className={`${styles.shell} ${styles.benefits}`}>
-            {benefits.map(({ title, copy, icon: Icon }) => (
-              <article className={styles.benefit} key={title}>
-                <div className={styles.benefitIcon}><Icon size={21} strokeWidth={1.8} aria-hidden="true" /></div>
-                <div>
-                  <h2>{title}</h2>
-                  <p>{copy}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <CoachingNextSteps />
 
-        <div className={styles.applicationBand}>
-          <div className={`${styles.shell} ${styles.applicationLayout}`}>
-            <div className={styles.applicationIntro}>
-              <p className={styles.appHeading}>Let’s start with your goals.</p>
-              <p>Answer five quick questions. You’ll get a WhatsApp draft to review and send to me when you’re ready.</p>
-            </div>
-            <div className={styles.applicationShell}>
-              <CoachingApplication />
-            </div>
-          </div>
-        </div>
-
-        <section className={styles.aboutSection} id="about" aria-labelledby="about-title">
+        <section className={styles.method} aria-labelledby="method-title">
           <div className={styles.shell}>
-            <div className={styles.aboutLayout}>
-              <figure className={styles.aboutPhoto}>
-                <Image className={styles.aboutImage} src="/images/clotilde-gym.webp" alt="Clotilde smiling in black workout clothes at the gym" width={908} height={1210} sizes="(max-width: 760px) calc(100vw - 40px), 475px" />
-              </figure>
-              <div className={styles.biography}>
-                <p className={styles.eyebrow}>Certified personal trainer · Miami</p>
-                <h2 className={styles.sectionTitle} id="about-title">Meet Clotilde.</h2>
-                <p>I started racing triathlons in Costa Rica at eight, then competed in weightlifting in France.</p>
-                <p>I spent years learning what helped me stay consistent. Now I coach people who want to get stronger and build a routine they can stick with.</p>
-                <a className={styles.textLink} href={instagram}><Instagram size={16} aria-hidden="true" /> Find me on Instagram <ArrowUpRight size={14} aria-hidden="true" /></a>
-              </div>
+            <div className={styles.sectionIntro}>
+              <h2 className={styles.sectionTitle} id="method-title">Coaching that fits your life.</h2>
+              <p>One-to-one support built around the way you want to train.</p>
+            </div>
+            <div className={styles.benefits}>
+              {benefits.map(({ title, copy, icon: Icon }) => (
+                <article className={styles.benefit} key={title}>
+                  <div className={styles.benefitIcon}><Icon size={23} strokeWidth={1.65} aria-hidden="true" /></div>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -165,6 +135,20 @@ export default function Home() {
         </section>
 
         <JeanneResults />
+
+        <section className={styles.aboutSection} id="about" aria-labelledby="about-title">
+          <div className={`${styles.shell} ${styles.aboutLayout}`}>
+            <div>
+              <p className={styles.eyebrow}>Certified personal trainer · Miami</p>
+              <h2 className={styles.sectionTitle} id="about-title">Meet Clotilde.</h2>
+            </div>
+            <div className={styles.biography}>
+              <p>I started racing triathlons in Costa Rica at eight, then competed in weightlifting in France.</p>
+              <p>I spent years learning what helped me stay consistent. Now I coach people who want to get stronger and build a routine they can stick with.</p>
+              <a className={styles.textLink} href={instagram}><Instagram size={17} aria-hidden="true" /> Find me on Instagram <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
+          </div>
+        </section>
 
         <section className={styles.faqSection} aria-labelledby="faq-title">
           <div className={`${styles.shell} ${styles.faqLayout}`}>

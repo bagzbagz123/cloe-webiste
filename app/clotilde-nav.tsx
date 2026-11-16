@@ -23,7 +23,7 @@ export default function ClotildeNav() {
   }
 
   return (
-    <header className={styles.header} onKeyDown={handleEscape}>
+    <header className={styles.header} aria-label="Clotilde Fitness" onKeyDown={handleEscape}>
       <div className={styles.inner}>
         <a className={styles.wordmark} href="#top" aria-label="Clotilde Fitness home" onClick={() => setIsOpen(false)}>
           <span>Clotilde</span><small>Fitness</small>

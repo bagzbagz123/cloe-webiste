@@ -1,15 +1,9 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, MessageCircle, Utensils } from "lucide-react";
 import { coachingLink } from "@/lib/coaching-contact";
 import CoachingApplication from "./coaching-application";
 import styles from "./coaching.module.css";
 import sections from "./coaching-sections.module.css";
-
-export const metadata: Metadata = {
-  title: "Cloe Fitness | Online Coaching with Clotilde",
-  description: "Personalized online strength coaching, nutrition guidance, and weekly check-ins with Clotilde. Explore Essential and Premium coaching.",
-};
 
 const instagram = "https://www.instagram.com/clotiicr/";
 
@@ -98,7 +92,7 @@ export default function Home() {
       <a className={styles.skipLink} href="#main">Skip to content</a>
       <header className={styles.header}>
         <div className={styles.shell}>
-          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">cloe<span>fitness</span></a>
+          <a className={styles.brand} href="#top" aria-label="Clotilde Fitness home">Clotilde<span>fitness</span></a>
           <nav className={styles.navigation} aria-label="Main navigation">
             <a className={styles.navLink} href="#coaching">Coaching</a>
             <a className={styles.navLink} href="#about">Meet Clotilde</a>
@@ -218,7 +212,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <div className={styles.shell}>
-          <a className={styles.brand} href="#top" aria-label="Cloe Fitness home">cloe<span>fitness</span></a>
+          <a className={styles.brand} href="#top" aria-label="Clotilde Fitness home">Clotilde<span>fitness</span></a>
           <div className={styles.footerLinks}>
             <a href="#coaching">Coaching plans</a>
             <a href={instagram}>Instagram</a>

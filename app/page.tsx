@@ -1,17 +1,15 @@
 import Image from "next/image";
-import { ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, Instagram, MessageCircle, Utensils } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ChevronDown, ClipboardCheck, Dumbbell, MessageCircle, Utensils } from "lucide-react";
 import { coachingLink } from "@/lib/coaching-contact";
 import CoachingApplication from "./coaching-application";
-import ClotildeNav from "./clotilde-nav";
-import JeanneResults from "./jeanne-results";
-import CoachingNextSteps from "./coaching-next-steps";
 import styles from "./coaching.module.css";
+import sections from "./coaching-sections.module.css";
 
 const instagram = "https://www.instagram.com/clotiicr/";
 
 const benefits = [
   {
-    title: "Personalized training",
+    title: "Training for your goals",
     copy: "A tailored workout plan that takes your experience, schedule, and equipment into account.",
     icon: Dumbbell,
   },
@@ -21,7 +19,7 @@ const benefits = [
     icon: Utensils,
   },
   {
-    title: "Weekly check-ins",
+    title: "Weekly accountability",
     copy: "Check in each week to review your progress, ask questions, and make adjustments with Clotilde.",
     icon: ClipboardCheck,
   },
@@ -58,6 +56,21 @@ const packages = [
   },
 ];
 
+const steps = [
+  {
+    title: "Fill out the application",
+    copy: "Tell Clotilde what you want to achieve and which plan you’re considering.",
+  },
+  {
+    title: "Send it on WhatsApp",
+    copy: "Review your draft in WhatsApp and tap Send to share your answers with Clotilde.",
+  },
+  {
+    title: "Find the right plan",
+    copy: "Clotilde will help you choose the level of support that fits and explain how to get started.",
+  },
+];
+
 const questions = [
   {
     question: "Do I need gym experience?",
@@ -77,34 +90,43 @@ export default function Home() {
   return (
     <div className={styles.page} id="top">
       <a className={styles.skipLink} href="#main">Skip to content</a>
-      <ClotildeNav />
+      <header className={styles.header}>
+        <div className={styles.shell}>
+          <a className={styles.brand} href="#top" aria-label="Clotilde Fitness home">Clotilde<span>fitness</span></a>
+          <nav className={styles.navigation} aria-label="Main navigation">
+            <a className={styles.navLink} href="#coaching">Coaching</a>
+            <a className={styles.navLink} href="#about">Meet Clotilde</a>
+          </nav>
+          <a className={styles.headerContact} href="#apply">Apply now <ArrowDown size={16} aria-hidden="true" /></a>
+        </div>
+      </header>
 
       <main id="main">
         <section className={styles.hero} aria-labelledby="hero-title">
-          <div className={`${styles.shell} ${styles.heroLayout}`}>
-            <figure className={styles.heroPortrait}>
-              <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1300px) 45vw, 590px" priority />
-            </figure>
-            <div className={styles.heroContent}>
-              <h1 id="hero-title">Clotilde Fitness</h1>
-              <p className={styles.heroLead}>Personalized online fitness coaching</p>
+          <figure className={styles.heroVisual}>
+            <Image className={styles.heroImage} src="/images/clotilde-portrait.webp" fill alt="Clotilde in pink workout clothes at the gym" sizes="(max-width: 760px) 100vw, 66vw" priority />
+            <figcaption className={styles.imageCaption}><strong>Clotilde</strong><span>Personal trainer · Miami</span></figcaption>
+          </figure>
+          <div className={styles.shell}>
+            <div className={styles.heroBody}>
+              <h1 className={styles.heroTitle} id="hero-title"><span>Get stronger.</span><em>Feel more like you.</em></h1>
+              <p className={styles.heroIntro}>1:1 online coaching with personalized training, nutrition guidance, and weekly support to help you feel more confident in the gym.</p>
               <CoachingApplication />
+              <a className={styles.heroPlanLink} href="#coaching">See coaching plans <ArrowDown size={16} aria-hidden="true" /></a>
             </div>
           </div>
         </section>
 
-        <CoachingNextSteps />
-
-        <section className={styles.method} aria-labelledby="method-title">
+        <section className={`${sections.section} ${sections.methodSection}`} aria-labelledby="benefits-title">
           <div className={styles.shell}>
-            <div className={styles.sectionIntro}>
-              <h2 className={styles.sectionTitle} id="method-title">Coaching that fits your life.</h2>
-              <p>One-to-one support built around the way you want to train.</p>
+            <div className={sections.sectionIntro}>
+              <h2 className={sections.sectionTitle} id="benefits-title">A plan that <em>fits your life.</em></h2>
+              <p className={sections.sectionCopy}>Training, nutrition, and weekly check-ins with Clotilde, built around your goals and the time you have.</p>
             </div>
-            <div className={styles.benefits}>
+            <div className={sections.benefits}>
               {benefits.map(({ title, copy, icon: Icon }) => (
-                <article className={styles.benefit} key={title}>
-                  <div className={styles.benefitIcon}><Icon size={23} strokeWidth={1.65} aria-hidden="true" /></div>
+                <article className={sections.benefit} key={title}>
+                  <span className={sections.benefitIcon}><Icon size={20} strokeWidth={1.5} aria-hidden="true" /></span>
                   <h3>{title}</h3>
                   <p>{copy}</p>
                 </article>
@@ -113,85 +135,87 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.plansSection} id="coaching" aria-labelledby="coaching-title">
+        <section className={`${sections.section} ${sections.plansSection}`} id="coaching" aria-labelledby="coaching-title">
           <div className={styles.shell}>
-            <div className={styles.sectionIntro}>
-              <h2 className={styles.sectionTitle} id="coaching-title">Find your coaching plan.</h2>
-              <p>Both plans include one-to-one online coaching. Prices are in USD.</p>
+            <div className={sections.sectionIntro}>
+              <h2 className={sections.sectionTitle} id="coaching-title">Choose your <em>coaching plan.</em></h2>
+              <p className={sections.sectionCopy}>Both plans are one-to-one and fully online. All prices are in USD.</p>
             </div>
-
-            <div className={styles.planGrid}>
+            <div className={sections.planGrid}>
               {packages.map((plan) => (
-                <article className={styles.plan} key={plan.id} data-featured={plan.id === "premium" ? "true" : undefined}>
-                  <p className={styles.planLabel}>{plan.months}-month plan</p>
-                  <h3>{plan.name}</h3>
-                  <p className={styles.planSummary}>{plan.summary}</p>
-                  <p className={styles.price}>${plan.monthly}<span> / month</span></p>
-                  <p className={styles.term}>${(plan.months * plan.monthly).toLocaleString("en-US")} total</p>
-                  <ul className={styles.featureList}>
-                    {plan.features.map((feature) => <li key={feature}><Check size={17} aria-hidden="true" />{feature}</li>)}
+                <article className={`${sections.plan} ${plan.name === "Premium" ? sections.featuredPlan : ""}`} key={plan.name}>
+                  <div className={sections.planHead}>
+                    <h3 className={sections.planName}>{plan.name}</h3>
+                    <p className={sections.planSummary}>{plan.summary}</p>
+                  </div>
+                  <p className={sections.price}>${plan.monthly}<span className={sections.priceSuffix}> / month</span></p>
+                  <p className={sections.term}>{plan.months}-month commitment · ${(plan.months * plan.monthly).toLocaleString("en-US")} total</p>
+                  <ul className={sections.featureList}>
+                    {plan.features.map((feature) => <li key={feature}><Check size={18} aria-hidden="true" />{feature}</li>)}
                   </ul>
-                  <a className={styles.planAction} href={`/?plan=${plan.id}#apply`}>Apply for {plan.name} <ArrowUpRight size={17} aria-hidden="true" /></a>
+                  <a className={sections.planAction} href={`/?plan=${plan.id}#apply`}>Apply for {plan.name} <ArrowUpRight size={18} aria-hidden="true" /></a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <JeanneResults />
-
-        <section className={styles.aboutSection} id="about" aria-labelledby="about-title">
-          <div className={`${styles.shell} ${styles.aboutLayout}`}>
-            <div>
-              <p className={styles.eyebrow}>Certified personal trainer · Miami</p>
-              <h2 className={styles.sectionTitle} id="about-title">Meet Clotilde.</h2>
-            </div>
-            <div className={styles.biography}>
-              <p>I started racing triathlons in Costa Rica at eight, then competed in weightlifting in France.</p>
-              <p>I spent years learning what helped me stay consistent. Now I coach people who want to get stronger and build a routine they can stick with.</p>
-              <a className={styles.textLink} href={instagram}><Instagram size={17} aria-hidden="true" /> Find me on Instagram <ArrowUpRight size={15} aria-hidden="true" /></a>
+        <section className={`${sections.section} ${sections.aboutSection}`} id="about" aria-labelledby="about-title">
+          <div className={styles.shell}>
+            <div className={sections.about}>
+              <div className={sections.aboutContent}>
+                <p className={sections.eyebrow}>Meet your coach</p>
+                <h2 className={sections.sectionTitle} id="about-title">Hi, I’m <em>Clotilde.</em></h2>
+                <p className={sections.sectionCopy}>I started triathlon at eight and later competed in weightlifting in France. I’m now a personal trainer based in Miami, helping clients build strength and find a routine they can stick with.</p>
+              </div>
+              <ol className={sections.steps} aria-label="How to get started">
+                {steps.map((step, index) => (
+                  <li className={sections.step} key={step.title}>
+                    <span className={sections.stepNumber} aria-hidden="true">0{index + 1}</span>
+                    <div><h3>{step.title}</h3><p>{step.copy}</p></div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>
 
-        <section className={styles.faqSection} aria-labelledby="faq-title">
-          <div className={`${styles.shell} ${styles.faqLayout}`}>
-            <div>
-              <h2 className={styles.sectionTitle} id="faq-title">Coaching questions.</h2>
-            </div>
-            <div>
-              {questions.map(({ question, answer }) => (
-                <details className={styles.faqItem} key={question}>
-                  <summary>{question}<ChevronDown size={19} strokeWidth={1.5} aria-hidden="true" /></summary>
-                  <p>{answer}</p>
-                </details>
-              ))}
+        <section className={`${sections.section} ${sections.faqSection}`} aria-labelledby="faq-title">
+          <div className={styles.shell}>
+            <div className={sections.faqLayout}>
+              <h2 className={sections.sectionTitle} id="faq-title">Common <em>questions.</em></h2>
+              <div className={sections.faqList}>
+                {questions.map(({ question, answer }) => (
+                  <details className={sections.faqItem} key={question}>
+                    <summary>{question}<ChevronDown size={20} strokeWidth={1.5} aria-hidden="true" /></summary>
+                    <p>{answer}</p>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <section className={styles.contact} id="contact" aria-labelledby="contact-title">
           <div className={styles.shell}>
-            <div className={styles.contactLayout}>
-              <h2 className={styles.sectionTitle} id="contact-title">Ready to train together?</h2>
-              <div>
-                <p>Fill out the application to get started, or send me a WhatsApp message if you have a question.</p>
-                <div className={styles.actions}>
-                  <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowUpRight size={16} aria-hidden="true" /></a>
-                  <a className={styles.textLink} href={coachingLink()}><MessageCircle size={17} aria-hidden="true" /> Chat on WhatsApp</a>
-                </div>
-              </div>
+            <div className={styles.contactCopy}>
+              <h2 className={styles.contactTitle} id="contact-title">Let’s talk <em>about your goals.</em></h2>
+              <p>Tell me what you’re working toward in the application, or message me with a question about either plan.</p>
+            </div>
+            <div className={styles.actions}>
+              <a className={styles.primaryButton} href="#apply">Apply for coaching <ArrowUpRight size={18} aria-hidden="true" /></a>
+              <a className={styles.secondaryButton} href={coachingLink()}><MessageCircle size={18} aria-hidden="true" /> Chat on WhatsApp</a>
             </div>
           </div>
         </section>
       </main>
 
       <footer className={styles.footer}>
-        <div className={`${styles.shell} ${styles.footerLayout}`}>
-          <a className={styles.footerBrand} href="#top" aria-label="Clotilde Fitness home">Clotilde <span>Fitness</span></a>
+        <div className={styles.shell}>
+          <a className={styles.brand} href="#top" aria-label="Clotilde Fitness home">Clotilde<span>fitness</span></a>
           <div className={styles.footerLinks}>
             <a href="#coaching">Coaching plans</a>
-            <a href={instagram}>Instagram <ArrowUpRight size={14} aria-hidden="true" /></a>
+            <a href={instagram}>Instagram</a>
           </div>
         </div>
       </footer>
